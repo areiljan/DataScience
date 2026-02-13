@@ -145,12 +145,102 @@ Consider the following (extreme) 2x2 contingency table and assume we want to tes
 | **True** | 99 | 0 | 99 |
 | **All** | 100 | 100 | 200 |
 
-
+This question concerns the t-test and the Wilcoxon test. Which statements are true and false
+1. The t-statistic is defined based on the difference between the difference in median.
+- False, the t-statistic is defined based on the difference between the mean of the two groups.
+2. If one of the groups follows a bimodal distribution, then the t-test can still be applied without
+issue, because the t-statistic does not depend on the mode
+- False, bimodality is a deviation from normality. The t-test needs a normal distribution.
+3. If both groups follow a normal distribution, the t-test will be more powerful (i.e. more likely to
+detect deviations from the null) than the Wilcoxon.
+- This is true. 
+4.  𝑃 (𝑋 > 𝑌) = 𝑃 (𝑌 > 𝑋), i.e. the ranks of our two groups follow the same distribution.
+- False, there may be a difference, but we may have too little data or too much noise to detect it.
 
 ## 9.
+Say we perform a Spearman correlation test for two variables. The test returns 𝑃 < 10^(−26) (i.e. values as
+or more extreme than the ones observed are astronomically unlikely under the null hypothesis). Indicate
+which, if any, of the following statements is correct:
+1. The two variables necessarily show a strong positive correlation (i.e. 𝜌 > 0.5)
+- No mention of the effect size
+2. The two variables necessarily show a strong negative correlation (i.e. 𝜌 < −0.5)
+- No mention of the effect size
+3. The two variables necessarily are strongly correlated (i.e. |𝜌| > 0.5)
+- No mention of the effect size
+4. Surely something very important has been discovered
+- Also not correct
+
+Indicate which, if any, of the following statements is correct:
+1. A simple yet effective strategy to control for multiple testing is to only reject the null hypothesis
+when 𝑃 = 0, i.e. when we are sure of the association
+- We can never find any results of any significance this way.
+2. Assume the null hypothesis is always true. If we do 200 tests, we will expect to have around 10
+false positives when using 𝛼 = 0.05 as our threshold of significance
+- This is true, a false negavive is a value that we predict as negative when it is actually positive.
+
+3. Assume the null hypothesis is always false. If we do 800 tests, we will expect to have around 80
+false positives when using 𝛼 = 0.1 as our threshold of significance
+- False, we will not find any effect.  
+
+4. Assume the null hypothesis is sometimes false. Then the 𝑃-values will follow a normal distribution
+- False, they will follow a uniform distribution.
+
+Assume we are doing 1000 tests. Indicate which, if any, of the following statements concerning Bonferroni
+and Benjamini-Hochberg are correct:
+1. Assume we are using a permutation-based approach. If we use a Bonferroni correction, we will in
+general need to do more permutations to be able to reject the null than if we used a BenjaminiHochberg correction.
+- This is true.
+2. If we let 𝛼 = 0.01 and use a Bonferroni correction, then the probability of one or more false positives
+(falsely rejecting the null) will be less than or equal to 1%
+- This is true.
+3. If we let 𝛼 = 0.01 and use a Benjaminin-Hochberg correction, then in expectation 1% of the tests
+we perform will reject the null
+- This is false. Benjamin-Hochberg checks for False Discovrey Rate (FDR). The rewording that would be true is that 1% of the tests that we evaluate as true (reject the null) will be false.
 
 ## 10.
+1. Assuming the assumptions of the linear regression hold, identify correct and incorrect
+statements:
+
+A. The coefficient estimated obtained by least squares are the most likely ones.
+- True, If we assume the errors follow a normal distribution, then the Maximum Likelihood Estimator (MLE) does give us the most likely coefficients.
+
+B. The data is most likely for the coefficients obtained by least squares.
+- True.
+
+C. Among all lines, the regression line minimises the sum of the squared distances of the data points to
+the line
+- This is true. Literal definition of Sum of Squared Errors (SSE).
+
+D. When they are known, the true coefficients 𝛽0 and 𝛽1 give the line that minimizes the squared errors
+- False. Actually we are estimating the $\hat{\beta}$ based on the data not the true coefficients. There is usually noise in the data that makes these two lines different.
+
+2. After performing linear regression on a dataset containing variables 𝑥 and 𝑦, the following
+model was obtained:
+̂𝑦 = 𝛽 ̂0 + 𝛽 ̂1𝑥1, 𝛽 ̂0 = 0 and 𝛽 ̂1 = 0
+Assuming Var(x) = Var(Y) = 1. What is the 𝑅2 of this model:
+- Our model is essentially saying $\hat{y} = \bar{y}$ 
+- 𝑅2 = 0
+
+3. After performing linear regression on a dataset containing variables 𝑥 and 𝑦, the following
+model was obtained:
+̂𝑦 = 𝛽 ̂ 0 + 𝛽 ̂ 1𝑥1, 𝛽 ̂0 = 10 and 𝛽 ̂ 1 = 0
+What is the 𝑅2 of this model:
+- 𝑅2 = 0 
+- R2 explains 0% of the variance in the data
+
+4. What are the implications of Heteroscedasticity on linear regression. Check all that are
+true:
+1 - The fit can be suboptimal because the least squares errors give too much importance to the points
+with high noise
+- True
+
+2 - The statistical tests are flawed
+- True
+
+3 - The coefficient estimates are biased
+- False
 
 ## 11.
+
 
 ## 12.
