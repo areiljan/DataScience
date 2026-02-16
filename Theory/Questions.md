@@ -240,7 +240,94 @@ with high noise
 3 - The coefficient estimates are biased
 - False
 
-## 11.
+5. Below we model the heights of students linearly as function of sex and heights of each parent. Interpret or comment the value of each fitted coefficient.
 
+```python
+heights.head()
+```
+
+|   | height | sex | mother | father |
+| - | ------ | --- | ------ | ------ |
+| 0 | 197    | M   | 175.0  | 191.0  |
+| 1 | 196    | M   | 163.0  | 192.0  |
+| 2 | 195    | M   | 171.0  | 185.0  |
+| 4 | 195    | M   | 168.0  | 191.0  |
+| 5 | 194    | M   | 164.0  | 189.0  |
+
+```python
+fit = smf.ols('height ~ sex + father + mother', data=heights).fit()
+print(fit.params)
+```
+
+Intercept    42.070267 --> The female with 0cm tall parents is 42 cm tall
+sex[T.M]     14.005339 --> Males are about 14cm taller than females with the same parent height
+father        0.360495 --> Each cm of father tallness brings on 0.36cm of 'height' variable rise
+mother        0.370539 --> Each cm of mother tallness brings on 0.37cm of 'height' variable rise
+
+
+6. You measure the velocity of two cars ($c=0$ and $c=1$) over time and decide to compare two linear models using ANOVA:
+
+$$
+\begin{aligned}
+\text{model A: } v &= \beta_0 + \beta_1 t + \epsilon \\
+\text{model B: } v &= \beta_0 + (\beta_1 + \beta_2 c) t + \epsilon
+\end{aligned}
+$$
+
+- The null hypothesis of ANOVA is that the acceleration of the cars is the same.
+
+7. You measure the distance travelled of two cars ($c=0$ and $c=1$) over time and decide to fit two linear models. The following models were obtained:
+
+$$
+\begin{aligned}
+\text{model A: } \hat{s} &= \hat{\beta}_0 t, \quad \hat{\beta}_0 = 60, R^2 = .9 \\
+\text{model B: } \hat{s} &= (\hat{\beta}_0 + \hat{\beta}_1 c) t, \quad \hat{\beta}_0 = 60, \hat{\beta}_1 = 1, R^2 = .9
+\end{aligned}
+$$
+
+- Car 1 is not significantly faster than car 0. Car 0 is not significantly faster than car 1. R^2 remained .9 in both cases which means that the added b1 explained no additional variance at all.
+
+
+## 11.
+1. Which of the following is true for logistic regression?
+a) It assigns classes to the datapoints. - false
+b) There is an analytical solution for the estimation of the parameters. - false
+c) It predicts probabilities for each of the two classes. - true
+
+2. Suppose you are given a fair coin, 𝑝(heads) = 0.5. Which of the following are true about odds and
+log-odds of head?
+b) The odds are 0.5, and the log-odds are approximately -0.693.
+
+3. Let sigm() denote the sigmoid function. For which of the following statements there exists 𝑥 ∈ ℝ
+such that the statement holds?
+note to self: remember that the sigmoid function is used to calculate odds, [0, 1]
+- sigm(x) = 10 --> nope
+- sigm(10) = x --> yes
+- sigm(x) = -1 --> nope
+- sigm(x) = 0.5 --> yes
+
+Sensitivity (Recall): The fraction of actual positives correctly predicted as positive.$\text{Sensitivity} = \frac{TP}{P} = \frac{TP}{TP+FN}$
+
+Specificity: The fraction of actual negatives correctly predicted as negative.$\text{Specificity} = \frac{TN}{N} = \frac{TN}{TN+FP}$
+
+Precision (Positive Predictive Value): The fraction of predicted positives that are actually positives.$\text{Precision} = \frac{TP}{TP+FP}$
+
+False Discovery Rate (FDR): A concept related to precision that measures the expected proportion of false positives among all positive predictions.$\text{FDR} = 1 - E[\text{Precision}]$
+
+Accuracy: The fraction of all instances (both positive and negative) that were correctly classified.$\text{Accuracy} = \frac{TP+TN}{P+N}$
+
+4. We are tasked with fitting a logistic regression to detect possible bank frauds that will be further
+investigated by the bank. Bank frauds are rare but when they occur can be very costly for the bank.
+Moreover, dealing with false alarms by manual inspection is not too costly. Which of the following
+is preferable? More than one answer can be correct.
+- High recall
 
 ## 12.
+A random forest consists of many decision trees that are trained on the same data set. How is
+randomness used to prevent over fitting? Select all that apply.
+a) Randomness is introduced by using different subsets of the original data set for training each
+decision tree. - True
+b) Randomness is introduced by CPU concurrency - parallel threads allow for tiny differences in
+feature importance. - False
+c) Randomness is introduced by using different feature sets of the original data set for training each
+decision tree. - True
